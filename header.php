@@ -3,6 +3,7 @@
 	// Kamil Sacha
 	// Last Update: April 25, 2021
     session_start();
+	include 'dbh.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,20 +18,44 @@
 	<header>
 		<h1 id="webTitle">Skylight</h1>
         <?php
-            if(isset($_SESSION["useruid"])){
+			$username = $_SESSION["useruid"];
+			$sql = "SELECT * FROM users WHERE userUid = '$username';";
+			$result = $conn -> query($sql);
+			$row = $result ->fetch_assoc();
+
+			$adminStatus = $row['isAdmin'];
+			if(isset($_SESSION["useruid"]) && $adminStatus == 1){
+				echo "<h3>Hello there " . $_SESSION["useruid"] . "! ADMIN</h3>";
+				echo "<a href='logout.inc.php'><button>Log Out</button></a>";
+				echo "</header>
+				<hr>
+				<nav>
+					<a href='index.php'>Home</a>
+					<a href='appPage.php'>Discover</a>
+					<a href='applicationRequestForm.php'>Submit an App Request</a>
+					<a href='applicationApproval.php'>Pending Applications</a>
+				</nav>";
+			}else if(isset($_SESSION["useruid"]) && $adminStatus == 0){
                 echo "<h3>Hello there " . $_SESSION["useruid"] . "!</h3>";
                 echo "<a href='logout.inc.php'><button>Log Out</button></a>";
+				echo "</header>
+				<hr>
+				<nav>
+					<a href='index.php'>Home</a>
+					<a href='appPage.php'>Discover</a>
+					<a href='applicationRequestForm.php'>Submit an App Request</a>
+				</nav>";
             }else{
                 echo "<h3 id='slogan'>Discover something new</h3>";
                 echo "<a href='signIn.php'><button>Sign In</button></a>";
                 echo "<a href='registration.php'><button>New User</button></a>";
+				echo "</header>
+				<hr>
+				<nav>
+					<a href='index.php'>Home</a>
+					<a href='appPage.php'>Discover</a>
+					<a href='applicationRequestForm.php'>Submit an App Request</a>
+				</nav>";
             }
         ?>	
-	</header>
-	<hr>
-	<nav>
-		<a href="index.php">Home</a>
-		<a href="appPage.php">Discover</a>
-		<a href='applicationRequestForm.php'>Submit an App Request</a>
-	</nav>
 	<hr>

@@ -32,15 +32,16 @@
             header("location: registration.php?error=passwordsdontmatch");
             exit();
         }
-        echo "You made it here!";
+
         if(uidExists($conn, $username, $email) !== false){
             header("location: registration.php?error=usernametaken");
             exit();
         }
+
+        echo "You get here!";
         createUser($conn, $email, $username, $pwd);
 
     }else{
-        echo "not the move";
         header("location: registration.php");
         exit();
     }
