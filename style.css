@@ -1,0 +1,160 @@
+/* 	Skylight Styling
+	Author: Kamil Sacha
+	Last Update: April 26, 2021
+*/
+
+body{
+	font-family: helvetica;
+
+	background: #FF5F6D;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+header{
+	display: flex;
+	margin: auto;
+}
+
+hr{
+	border: 1px solid black;
+}
+
+#webTitle{
+	padding-right: 65%;
+}
+
+#slogan{
+	padding-right: 5px;
+}
+
+button{
+	height: 35px;
+	width: 90px;
+    cursor: pointer;
+}
+
+nav{
+	font-size: 18px;
+}
+
+a {
+	padding: 10px;
+	text-decoration: none;
+}
+a:hover{
+	font-weight: bold;
+}
+
+a:visited{
+	color: black;
+	text-decoration: none;
+}
+
+a:link{
+	color: black;
+	text-decoration: none;
+}
+
+#mainLogo{
+	font-size: 90px;
+}
+
+#mainMessage{
+	font-style: italic;
+	font-size: 60px;
+}
+
+textarea{
+    width: 400px;
+    height: 80px;
+    resize: none;
+}
+
+.comment-box{
+    width: 815px;
+    padding: 20px;
+    margin-bottom: 4px;
+    background-color:#fff;
+    border-radius: 4px;
+    position: relative;
+}
+
+.comment-box p {
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 16px;
+    color: #282828;
+    font-weight: 100;
+}
+
+.edit-form { 
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.edit-form button {
+    border: none;
+    width: 40px;
+    height: 20px;
+    color: #282828;
+    background-color: #fff;
+    opacity: 0.7;
+}
+
+.edit-form button:hover{
+    opacity: 1;
+}
+
+.delete-form { 
+    position: absolute;
+    top: 0px;
+    right: 60px;
+}
+
+.delete-form button {
+    border: none;
+    width: 40px;
+    height: 20px;
+    color: #282828;
+    background-color: #fff;
+    opacity: 0.7;
+}
+
+.delete-form button:hover{
+    opacity: 1;
+}
+
+#logo{
+    padding: 5px;
+	width: 100px;
+	border-radius: 25%;
+}
+
+#appTable{
+    border-collapse: collapse;
+}
+
+#appTable td, #appTable th{
+    padding: 8px;
+    border: 1px solid;
+}
+
+#appTable tr:nth-child(even){
+    background-color: none;
+} 
+
+#appTable tr:hover{
+    font-weight: bold;
+}
+
+#customers th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: none;
+    opacity: 0.5;
+}
+
+
