@@ -33,7 +33,7 @@
 					<a href='index.php'>Home</a>
 					<a href='appPage.php'>Discover</a>
 					<a href='applicationRequestForm.php'>Submit an App Request</a>
-					<a href='applicationApproval.php'>Pending Applications</a>
+					<a href='pendingApplications.php'>Pending Applications</a>
 				</nav>";
 			}else if(isset($_SESSION["useruid"]) && $adminStatus == 0){
                 echo "<h3>Hello there " . $_SESSION["useruid"] . "!</h3>";

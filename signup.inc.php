@@ -38,7 +38,6 @@
             exit();
         }
 
-        echo "You get here!";
         createUser($conn, $email, $username, $pwd);
 
     }else{

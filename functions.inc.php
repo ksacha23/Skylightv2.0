@@ -88,6 +88,21 @@ function createUser($conn, $email, $username, $pwd){
     exit();
 }
 
+function createAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description){
+    $sql = "INSERT INTO appRequests (name, creator, platforms, version, appleLink, googleLink, price, genre, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: applicationRequestForm.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sssssssss", $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: applicationRequestForm.php?error=none");
+    exit();
+}
+
 function emptyInputLogin($username, $pwd){
     $result;
     if(empty($username) || empty($pwd)){
