@@ -34,15 +34,20 @@
             <p>Apple App Store Link: ".$appleLink."</p>
             <p>Google Play Store Link: ".$googleLink."</p>
     
-            <form method=post>
-                <input type='submit' name='approve' value='Approve'>
-                <input type='submit' name='reject' value='Reject'>
+            <form method=post action='approveRequest.inc.php'>
+                <input type='hidden' name='appName' value=".$name."><br>
+                <input type='hidden' name='developer' value=".$creator."><br>
+                <input type='hidden' name='genre' value=".$genre."><br>
+                <input type='hidden' name='price' value=".$price."><br>
+                <input type='hidden' name='platforms' value=".$platforms."><br>
+                <input type='hidden' name='version' value=".$version."><br>
+                <input type='hidden' name='appDescription' value=".$description."><br>
+                <input type='hidden' name='appleSite' value=".$appleLink."><br>
+                <input type='hidden' name='googleSite' value=".$googleLink."><br>
+                <input type='hidden' name='rid' value=".$rid."><br>
+                <button type='submit' name='approve'>Approve</button>
+            </form>
+            <form method=post action='rejectRequest.inc.php'>
+                <input type='hidden' name='rid' value=".$rid."><br>
+                <button type='submit' name='reject'>Reject</button>
             </form>";
-
-    if(isset($_POST['approve'])){
-        echo "App Aproved";
-        approveAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description);
-
-    }else if(isset($_POST['reject'])){
-        echo "App Rejected";
-    }

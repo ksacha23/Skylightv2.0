@@ -1,10 +1,11 @@
 <?php
-
-    // App Request Processing
+    // Approve App Request
     // Kamil Sacha
-    // Last Update: April 26, 2021
+    // Last Update: April 27, 2021
 
-    if(isset($_POST["submitRequest"])){
+
+
+    if(isset($_POST["approve"])){
         $appName = $_POST["appName"];
         $creator = $_POST["developer"];
         $platforms = $_POST["platforms"];
@@ -14,13 +15,14 @@
         $price = $_POST["price"];
         $genre = $_POST["genre"];
         $description = $_POST["appDescription"];
+        $rid = $_POST["rid"];
 
         require_once 'dbh.inc.php';
         require_once 'functions.inc.php';
 
-        createAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description);
+        approveAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description, $rid);
 
     }else{
-        header("location: applicationRequestForm.php");
+        "location: pendingApplications.php";
         exit();
     }

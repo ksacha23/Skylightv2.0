@@ -113,8 +113,8 @@ function createAppRequest($conn, $appName, $creator, $platforms, $version, $appl
     exit();
 }
 
-// This function occurs when an admin as approved an app request. It will insert the app request into the apps database and remove the app request from the appRequest table
-function approveAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description){
+// This function occurs when an admin has approved an app request. It will insert the app request into the apps database and remove the app request from the appRequest table
+function approveAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description, $rid){
     $sql = "INSERT INTO apps (name, creator, platforms, version, appleLink, googleLink, price, genre, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -125,6 +125,31 @@ function approveAppRequest($conn, $appName, $creator, $platforms, $version, $app
     mysqli_stmt_bind_param($stmt, "sssssssss", $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+
+    $sql1 = "DELETE FROM `appRequests` WHERE `appRequests`.`requestId` = $rid";
+    $stmt1 = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt1, $sql1)){
+        header("location: pendingApplications.php?error=WillNotDelete");
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt1);
+    mysqli_stmt_close($stmt1);
+    header("location: pendingApplications.php?error=none");
+    exit();
+}
+
+// This function occurs when an admin has rejected an app request. It will delete the app request from the app request from the appRequest table
+function rejectAppRequest($conn, $rid){
+    $sql1 = "DELETE FROM `appRequests` WHERE `appRequests`.`requestId` = $rid";
+    $stmt1 = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt1, $sql1)){
+        header("location: pendingApplications.php?error=WillNotDelete");
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt1);
+    mysqli_stmt_close($stmt1);
     header("location: pendingApplications.php?error=none");
     exit();
 }
