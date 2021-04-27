@@ -1,4 +1,10 @@
 <?php
+    // App Page
+    // Kamil Sacha
+    // Last Update: April 27, 2021
+
+    // This page displays all the apps that are a part of Skylight and allows users to search/filter for apps they wish to discover
+
     session_start();
 
     if(isset($_POST['search'])){

@@ -3,6 +3,8 @@
 // Kamil Sacha
 // Last Update: April 25, 2021
 
+// Executes the functions for verifying user log in
+
 if(isset($_POST["submit"])){
 
     $username = $_POST["uid"];

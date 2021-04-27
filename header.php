@@ -2,6 +2,8 @@
 	// Header for each page
 	// Kamil Sacha
 	// Last Update: April 25, 2021
+
+	// This header will appear on every page. It includes all the styling for the website and will adjust based on the type of user accesing the page
     session_start();
 	include 'dbh.inc.php';
 ?>

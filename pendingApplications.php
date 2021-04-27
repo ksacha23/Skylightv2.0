@@ -1,4 +1,9 @@
 <?php
+    // Pending Applications Page
+    // Kamil Sacha
+    // Last Update: April 27, 2021
+
+    // This page displays pending application requests for the Admin that they can either approve or reject
     session_start();
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
@@ -36,25 +41,8 @@
 
     if(isset($_POST['approve'])){
         echo "App Aproved";
-        $sql = "INSERT INTO apps (name, creator, platforms, version, appleLink, googleLink, price, genre, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt, $sql)){
-            header("location: pendingApplications.php?error=stmtfailed");
-            exit();
-        }
-    
-        mysqli_stmt_bind_param($stmt, "sssssssss", $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
-        header("location: pendingApplications.php?error=none");
-        exit();
+        approveAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description);
 
-        $sqlDelete = "DELETE FROM `appRequests` WHERE requestId = $rid;";
-        $stmtDelete = mysqli_stmt_init($conn);
-        mysqli_stmt_execute($stmtDelete);
     }else if(isset($_POST['reject'])){
         echo "App Rejected";
-        $sqlDelete = "DELETE FROM `appRequests` WHERE requestId = $rid;";
-        $stmtDelete = mysqli_stmt_init($conn);
-        mysqli_stmt_execute($stmtDelete);
     }

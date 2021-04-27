@@ -1,4 +1,9 @@
 <?php
+    // Application Request Form
+    // Kamil Sacha/Max Zaremba
+    // Last Update: April 27, 2021
+
+    // This page allows users to submit app requests for skylight that will be sent to an admin for approval
     include_once 'header.php';
 ?>
 

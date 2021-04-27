@@ -3,6 +3,8 @@
 // Kamil Sacha
 // Last Update: April 26, 2021
 
+// This file helps present the comment sections on each app page
+
 "<link rel='stylesheet' href='style.css' type='text/css'>";
 
 function setComments($conn){

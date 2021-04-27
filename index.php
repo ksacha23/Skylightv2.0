@@ -2,6 +2,8 @@
 // Index page
 // Kamil Sacha
 // Last Update: April 26, 2021
+
+// This is the first page users will see when they reach Skylight
 	session_start();
 	include_once 'header.php';
 ?>
