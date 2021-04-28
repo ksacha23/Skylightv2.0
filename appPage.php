@@ -59,7 +59,13 @@ This page will display all the apps in the Skylight app repository
             </tr>
             <?php while($row = mysqli_fetch_array($search_result)):?>
                 <tr>
-                    <td><?php echo $row['name'];?></td>
+                <?php 
+                    $linkName = $row['name'];
+                    $linkName = str_replace(' ','',$linkName);
+                    $linkName = strtolower($linkName);
+                ?>
+
+                    <td><a href="<?php echo $linkName; ?>AppPage.php"><?php echo $row['name'];?></a></td>
                     <td><?php echo $row['creator'];?></td>
                     <td><?php echo $row['price'];?></td>
                     <td><?php echo $row['genre'];?></td>
@@ -68,5 +74,4 @@ This page will display all the apps in the Skylight app repository
         </table>
     </form>
 </body>
-
 </html>

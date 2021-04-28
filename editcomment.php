@@ -6,6 +6,7 @@
 
     include_once 'header.php';
     include_once 'dbh.inc.php';
+    include_once 'comments.inc.php';
 
     $cid = $_POST['cid'];
     $uid = $_POST['uid'];
@@ -14,7 +15,7 @@
 
 
     // action will not work with this form
-    echo "<form method='POST'>
+    echo "<form method='POST' action='".editComments($conn)."'>
                 <input type='hidden' name='cid' value='".$cid."'>
                 <input type='hidden' name='uid' value='".$uid."'>
                 <input type='hidden' name='date' value='".$date."'>

@@ -66,8 +66,8 @@ a:link{
 }
 
 textarea{
-    width: 400px;
-    height: 80px;
+    width: 850px;
+    height: 150px;
     resize: none;
 }
 
@@ -77,6 +77,7 @@ textarea{
     margin-bottom: 4px;
     background-color:#fff;
     border-radius: 4px;
+    /* position: relative; is causing the overlay problem in the comment section when a user is not logged in */
     position: relative;
 }
 

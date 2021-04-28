@@ -11,7 +11,7 @@
     date_default_timezone_set('America/New_York');
 ?>
 	<div id="appVisual">
-		<img src="PaypalLogo.png" alt="PayPalLogo" id="PayPalLogo">
+		<img src="PaypalLogo.png" alt="PayPalLogo" id="logo">
 		<h3>PayPal</h3>
 	</div>
 

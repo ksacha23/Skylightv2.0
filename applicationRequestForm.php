@@ -4,6 +4,7 @@
     // Last Update: April 27, 2021
 
     // This page allows users to submit app requests for skylight that will be sent to an admin for approval
+    session_start();
     include_once 'header.php';
 ?>
 
@@ -37,7 +38,13 @@
         <label for="appDescription">Please write a short description about your application.</label><br>
         <input type="text" name="appDescription" required><br><br>
 
-        <button type="submit" name="submitRequest">Submit</button>
+        <?php
+            if(isset($_SESSION['useruid'])){
+                echo "<button type='submit' name='submitRequest'>Submit</button>";
+            }else{
+                echo "You need to be logged in to submit an app request!<br><br>";
+            }
+        ?>
 </form>
 
 <?php
