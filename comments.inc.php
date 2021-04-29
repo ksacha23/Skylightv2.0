@@ -21,35 +21,76 @@ function setComments($conn, $commentDb){
 function getComments($conn, $commentDb){
     $sql = "SELECT * FROM $commentDb;";
     $result = $conn -> query($sql);
-    while($row = $result->fetch_assoc()){
-        $id = $row['uid'];
-        $sql2 = "SELECT * FROM users WHERE userId = '$id';";
-        $result2 = $conn -> query($sql2);
-        if($row2 = $result2->fetch_assoc()){
-            echo "<div class='comment-box'><p>";
-            echo $row2['userUid']."<br>";
-            echo $row['date'] . "<br><br>";
-            echo nl2br($row['message']);
-            echo "</p>";
-                if($_SESSION['useruid'] == $row2['userUid']){
-                    echo"<form class='delete-form' method='POST' action='".deleteComments($conn, $commentDb)."'>
-                            <input type='hidden' name='cid' value='".$row['cid']."'>
-                            <button type='submit' name='commentDelete'>Delete</button>
-                        </form>
-                        <form class='edit-form' method='POST' action='editcomment.php'>
-                             <input type='hidden' name='cid' value='".$row['cid']."'>
-                             <input type='hidden' name='uid' value='".$row['uid']."'>
-                             <input type='hidden' name='date' value='".$row['date']."'>
-                             <input type='hidden' name='message' value='".$row['message']."'>
-                             <input type='hidden' name='commentsDb' value='".$commentDb."'>
-                             <input type='hidden' name='url' value='".$_SERVER['REQUEST_URI']."'>
-                            <button>Edit</button>
-                         </form>";
+
+    
+    $sql3 = "SELECT * FROM users WHERE isAdmin=1;";
+    $result3 = $conn -> query($sql3);
+
+    while($row3 = $result3->fetch_assoc()){
+        if($_SESSION['useruid'] == $row3['userUid']){
+            while($row = $result->fetch_assoc()){
+                $id = $row['uid'];
+                $sql2 = "SELECT * FROM users WHERE userId = '$id';";
+                $result2 = $conn -> query($sql2);
+        
+                if($row2 = $result2->fetch_assoc()){
+                    echo $row2['isAdmin'];
+                    echo "<div class='comment-box'><p>";
+                    echo $row2['userUid']."<br>";
+                    echo $row['date'] . "<br><br>";
+                    echo nl2br($row['message']);
+                    echo "</p>";
+                        if($_SESSION['useruid']){
+                            echo"<form class='delete-form' method='POST' action='".deleteComments($conn, $commentDb)."'>
+                                    <input type='hidden' name='cid' value='".$row['cid']."'>
+                                    <button type='submit' name='commentDelete'>Delete</button>
+                                </form>
+                                <form class='edit-form' method='POST' action='editcomment.php'>
+                                     <input type='hidden' name='cid' value='".$row['cid']."'>
+                                     <input type='hidden' name='uid' value='".$row['uid']."'>
+                                     <input type='hidden' name='date' value='".$row['date']."'>
+                                     <input type='hidden' name='message' value='".$row['message']."'>
+                                     <input type='hidden' name='commentsDb' value='".$commentDb."'>
+                                     <input type='hidden' name='url' value='".$_SERVER['REQUEST_URI']."'>
+                                    <button>Edit</button>
+                                 </form>";
+                        }
+                    }
+                    echo "</div>";           
                 }
-            }
-            echo "</div>";           
+        }else{
+            while($row = $result->fetch_assoc()){
+                $id = $row['uid'];
+                $sql2 = "SELECT * FROM users WHERE userId = '$id';";
+                $result2 = $conn -> query($sql2);
+        
+                if($row2 = $result2->fetch_assoc()){
+                    echo "<div class='comment-box'><p>";
+                    echo $row2['userUid']."<br>";
+                    echo $row['date'] . "<br><br>";
+                    echo nl2br($row['message']);
+                    echo "</p>";
+                        if($_SESSION['useruid'] == $row2['userUid']){
+                            echo"<form class='delete-form' method='POST' action='".deleteComments($conn, $commentDb)."'>
+                                    <input type='hidden' name='cid' value='".$row['cid']."'>
+                                    <button type='submit' name='commentDelete'>Delete</button>
+                                </form>
+                                <form class='edit-form' method='POST' action='editcomment.php'>
+                                     <input type='hidden' name='cid' value='".$row['cid']."'>
+                                     <input type='hidden' name='uid' value='".$row['uid']."'>
+                                     <input type='hidden' name='date' value='".$row['date']."'>
+                                     <input type='hidden' name='message' value='".$row['message']."'>
+                                     <input type='hidden' name='commentsDb' value='".$commentDb."'>
+                                     <input type='hidden' name='url' value='".$_SERVER['REQUEST_URI']."'>
+                                    <button>Edit</button>
+                                 </form>";
+                        }
+                    }
+                    echo "</div>";           
+                }
         }
     }
+}
 
 function editComments($conn){
     if(isset($_POST['commentSubmit'])){
