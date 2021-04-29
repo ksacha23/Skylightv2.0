@@ -1,5 +1,5 @@
 <?php
-require_once "db.php";
+require_once "dbh.inc.php";
 
     if (isset($_GET['term'])) {
 
