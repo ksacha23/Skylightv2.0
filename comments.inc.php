@@ -7,19 +7,19 @@
 
 "<link rel='stylesheet' href='style.css' type='text/css'>";
 
-function setComments($conn){
+function setComments($conn, $commentDb){
     if(isset($_POST['commentSubmit'])){
         $uid = $_POST['uid'];
         $date = $_POST['date'];
         $message = $_POST['message'];
 
-        $sql = "INSERT INTO comments (uid, date, message) VALUES ('$uid', '$date', '$message');";
+        $sql = "INSERT INTO $commentDb (uid, date, message) VALUES ('$uid', '$date', '$message');";
         $result = $conn -> query($sql);
     }
 }
 
-function getComments($conn){
-    $sql = "SELECT * FROM comments;";
+function getComments($conn, $commentDb){
+    $sql = "SELECT * FROM $commentDb;";
     $result = $conn -> query($sql);
     while($row = $result->fetch_assoc()){
         $id = $row['uid'];
@@ -31,39 +31,25 @@ function getComments($conn){
             echo $row['date'] . "<br><br>";
             echo nl2br($row['message']);
             echo "</p>";
-
-            if(isset($_SESSION['useruid'])){
-                if($row2['isAdmin'] == 0){
-                    echo"<form class='delete-form' method='POST' action='".deleteComments($conn)."'>
+                if($_SESSION['useruid'] == $row2['userUid']){
+                    echo"<form class='delete-form' method='POST' action='".deleteComments($conn, $commentDb)."'>
                             <input type='hidden' name='cid' value='".$row['cid']."'>
                             <button type='submit' name='commentDelete'>Delete</button>
                         </form>
                         <form class='edit-form' method='POST' action='editcomment.php'>
-                            <input type='hidden' name='cid' value='".$row['cid']."'>
-                            <input type='hidden' name='uid' value='".$row['uid']."'>
-                            <input type='hidden' name='date' value='".$row['date']."'>
-                            <input type='hidden' name='message' value='".$row['message']."'>
+                             <input type='hidden' name='cid' value='".$row['cid']."'>
+                             <input type='hidden' name='uid' value='".$row['uid']."'>
+                             <input type='hidden' name='date' value='".$row['date']."'>
+                             <input type='hidden' name='message' value='".$row['message']."'>
+                             <input type='hidden' name='commentsDb' value='".$commentDb."'>
+                             <input type='hidden' name='url' value='".$_SERVER['REQUEST_URI']."'>
                             <button>Edit</button>
-                        </form>";
-                }else if($_SESSION['useruid'] == $row2['userUid']){
-                    echo"<form class='delete-form' method='POST' action='".deleteComments($conn)."'>
-                            <input type='hidden' name='cid' value='".$row['cid']."'>
-                            <button type='submit' name='commentDelete'>Delete</button>
-                        </form>
-                        <form class='edit-form' method='POST' action='editcomment.php'>
-                            <input type='hidden' name='cid' value='".$row['cid']."'>
-                            <input type='hidden' name='uid' value='".$row['uid']."'>
-                            <input type='hidden' name='date' value='".$row['date']."'>
-                            <input type='hidden' name='message' value='".$row['message']."'>
-                            <button>Edit</button>
-                        </form>";
+                         </form>";
                 }
-
             }
             echo "</div>";           
         }
     }
-}
 
 function editComments($conn){
     if(isset($_POST['commentSubmit'])){
@@ -71,20 +57,23 @@ function editComments($conn){
         $uid = $_POST['uid'];
         $date = $_POST['date'];
         $message = $_POST['message'];
+        $commentDb = $_POST['commentsDb'];
+        $url = $_POST['url'];
+        $fullURL = $_SERVER['HTTP_HOST'].$url;
 
-        $sql = "UPDATE comments SET message='$message' WHERE cid='$cid'";
+        $sql = "UPDATE $commentDb SET message='$message' WHERE cid='$cid'";
         $result = $conn -> query($sql);
 
-        header("Location: spotifyAppPage.php");
+        header('Location:' .$fullURL);
     }
 }
 
-function deleteComments($conn){
+function deleteComments($conn, $commentDb){
 
     if(isset($_POST['commentDelete'])){
         $cid = $_POST['cid'];
 
-        $sql = "DELETE FROM comments WHERE cid='$cid'";
+        $sql = "DELETE FROM $commentDb WHERE cid='$cid'";
         $result = $conn -> query($sql);
 
         header("Location: spotifyAppPage.php");

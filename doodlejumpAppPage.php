@@ -32,8 +32,9 @@
 </div>
 
 <?php
+    $commentDb = 'doodleJumpComments';
     if(isset($_SESSION['useruid'])){
-        echo "<form method='POST' action='".setComments($conn)."'>
+        echo "<form method='POST' action='".setComments($conn, $commentDb)."'>
         <input type='hidden' name='uid' value='".$_SESSION['userid']."'>
         <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
         <textarea name='message'></textarea><br><br>
@@ -43,5 +44,5 @@
         echo "You need to be logged in to comment!<br><br>";
     }
 
-    getComments($conn);
+    getComments($conn, $commentDb);
 ?>
