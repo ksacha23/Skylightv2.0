@@ -44,9 +44,25 @@ This page will display all the apps in the Skylight app repository
 <?php
     include_once 'header.php';
 ?>
+	<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	</head>
+	
+	<script type="text/javascript">
+		$(function() {
+			$("#searchValue").autocomplete({
+				source: 'search_db.php',
+			});
+		});
+	</script>
+
 	<h1>All Apps</h1>
     <form action="appPage.php" method="post">
-        <input type="text" name="searchValue" placeholder="Search..."><br><br>
+        <input type="text" name="searchValue" id="searchValue" placeholder="Search..."><br><br>
         <input type="submit" name="search" value="Search">
         <input type="submit" name="allApps" value="See All Apps"><br><br>
 
