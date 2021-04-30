@@ -53,9 +53,9 @@
 					<a href='help.php'>Help</a>
 				</nav>";
             }else{
-                echo "<h3 id='slogan'>Discover something new</h3>";
+                echo "<div id='sloganDiv'><h3 id='slogan'>Discover something new</h3>";
                 echo "<a href='signIn.php'><button>Sign In</button></a>";
-                echo "<a href='registration.php'><button>New User</button></a>";
+                echo "<a href='registration.php'><button>New User</button></a></div>";
 				echo "</header>
 				<hr>
 				<nav>
