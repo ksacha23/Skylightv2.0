@@ -114,6 +114,7 @@ function createAppRequest($conn, $appName, $creator, $platforms, $version, $appl
 }
 
 // This function occurs when an admin has approved an app request. It will insert the app request into the apps database and remove the app request from the appRequest table
+// ERROR with this Function
 function approveAppRequest($conn, $appName, $creator, $platforms, $version, $appleLink, $googleLink, $price, $genre, $description, $rid){
     $sql = "INSERT INTO apps (name, creator, platforms, version, appleLink, googleLink, price, genre, description) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);

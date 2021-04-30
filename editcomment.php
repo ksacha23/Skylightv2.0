@@ -1,5 +1,4 @@
 <?php
-
     // Edit Comment Page
     // Kamil Sacha
     // Last Update: April 26, 2021

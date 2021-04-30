@@ -60,34 +60,36 @@ This page will display all the apps in the Skylight app repository
 		});
 	</script>
 
-	<h1>All Apps</h1>
-    <form action="appPage.php" method="post">
-        <input type="text" name="searchValue" id="searchValue" placeholder="Search..."><br><br>
-        <input type="submit" name="search" value="Search">
-        <input type="submit" name="allApps" value="See All Apps"><br><br>
+    <div id=appPageBody>
+        <h1>All Apps</h1>
+        <form action="appPage.php" method="post">
+            <input type="text" name="searchValue" id="searchValue" placeholder="Search..."><br><br>
+            <input type="submit" name="search" value="Search">
+            <input type="submit" name="allApps" value="See All Apps"><br><br>
 
-        <table id="appTable">
-            <tr>
-                <th>App Name</th>
-                <th>Creator</th>
-                <th>Price</th>
-                <th>Genre</th>
-            </tr>
-            <?php while($row = mysqli_fetch_array($search_result)):?>
+            <table id="appTable">
                 <tr>
-                <?php 
-                    $linkName = $row['name'];
-                    $linkName = str_replace(' ','',$linkName);
-                    $linkName = strtolower($linkName);
-                ?>
-
-                    <td><a href="<?php echo $linkName; ?>AppPage.php"><?php echo $row['name'];?></a></td>
-                    <td><?php echo $row['creator'];?></td>
-                    <td><?php echo $row['price'];?></td>
-                    <td><?php echo $row['genre'];?></td>
+                    <th>App Name</th>
+                    <th>Creator</th>
+                    <th>Price</th>
+                    <th>Genre</th>
                 </tr>
-            <?php endwhile;?>
-        </table>
-    </form>
+                <?php while($row = mysqli_fetch_array($search_result)):?>
+                    <tr>
+                    <?php 
+                        $linkName = $row['name'];
+                        $linkName = str_replace(' ','',$linkName);
+                        $linkName = strtolower($linkName);
+                    ?>
+
+                        <td><a href="<?php echo $linkName; ?>AppPage.php"><?php echo $row['name'];?></a></td>
+                        <td><?php echo $row['creator'];?></td>
+                        <td><?php echo $row['price'];?></td>
+                        <td><?php echo $row['genre'];?></td>
+                    </tr>
+                <?php endwhile;?>
+            </table>
+        </form>
+    </div>
 </body>
 </html>
