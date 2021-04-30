@@ -20,12 +20,12 @@ hr{
 	border: 1px solid black;
 }
 
-#sloganDiv{
+#sloganDiv, #adminWelcome, #userWelcome {
         position: absolute;
         right: 5px;
 }
 
-#slogan{
+#slogan, #adminHeader, #userHeader {
 	margin-top: 5px;
         padding-right: 5px;
         position: relative;
