@@ -5,17 +5,10 @@ CSE 201 Project Skylight
 
 Skylight is a web-based application catalog.
 
-
-<ins>**Installation**</ins>
-
-
 <ins>**Usage**</ins>
 
 Simply type the name of an application to pull up its page. 
 Users also have the ability to leave coments regarding their opinions and experiences about it.
-
-<ins>**Contributions**</ins>
-
 
 <ins>**Credits**</ins> <br>
 Project Manager: Max Zaremba <br>
