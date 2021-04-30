@@ -1,16 +1,14 @@
 # Skylight
 CSE 201 Project Skylight
 
-## Description
-
+### Description
 Skylight is a web-based application catalog.
 
-<ins>**Usage**</ins>
-
+### Usage
 Simply type the name of an application to pull up its page. 
 Users also have the ability to leave coments regarding their opinions and experiences about it.
 
-<ins>**Credits**</ins> <br>
+### Credits
 Project Manager: Max Zaremba <br>
 Technical Manager: Kamil Sacha <br>
 Developer: Regina Garza <br>
