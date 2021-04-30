@@ -1,7 +1,7 @@
 # Skylight
 CSE 201 Project Skylight
 
-<ins>**Description**</ins>
+## Description
 
 Skylight is a web-based application catalog.
 
