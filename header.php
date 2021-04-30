@@ -29,8 +29,8 @@
 
 			$adminStatus = $row['isAdmin'];
 			if(isset($_SESSION["useruid"]) && $adminStatus == 1){
-				echo "<h3>Hello there " . $_SESSION["useruid"] . "! ADMIN</h3>";
-				echo "<a href='logout.inc.php'><button>Log Out</button></a>";
+				echo "<div id='adminWelcome'><h3 id='adminHeader'>Hello there " . $_SESSION["useruid"] . "! ADMIN</h3>";
+				echo "<a href='logout.inc.php'><button>Log Out</button></a></div>";
 				echo "</header>
 				<hr>
 				<nav>
@@ -42,8 +42,8 @@
 					<a href='adminHelp.php'>Admin Resources</a>
 				</nav>";
 			}else if(isset($_SESSION["useruid"]) && $adminStatus == 0){
-                echo "<h3>Hello there " . $_SESSION["useruid"] . "!</h3>";
-                echo "<a href='logout.inc.php'><button>Log Out</button></a>";
+                echo "<div id='userWelcome'><h3 id='userHeader'>Hello there " . $_SESSION["useruid"] . "!</h3>";
+                echo "<a href='logout.inc.php'><button>Log Out</button></a></div>";
 				echo "</header>
 				<hr>
 				<nav>
