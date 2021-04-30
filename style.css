@@ -7,8 +7,8 @@ body{
 	font-family: 'Roboto', sans-serif;
 
 	background: #3944bc;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #b5d3e7, #3944bc;);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #b5d3e7, #3944bc;); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(to right, #badbff, #3944bc);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #badbff, #3944bc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 header{
