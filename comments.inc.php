@@ -1,11 +1,13 @@
 <?php
 // Comment Section Functions
 // Kamil Sacha
-// Last Update: April 26, 2021
+// Last Update: April 30, 2021
 
 // This file helps present the comment sections on each app page
 
 "<link rel='stylesheet' href='style.css' type='text/css'>";
+include_once 'header.php';
+
 
 function setComments($conn, $commentDb){
     if(isset($_POST['commentSubmit'])){
@@ -34,7 +36,6 @@ function getComments($conn, $commentDb){
                 $result2 = $conn -> query($sql2);
         
                 if($row2 = $result2->fetch_assoc()){
-                    echo $row2['isAdmin'];
                     echo "<div class='comment-box'><p>";
                     echo $row2['userUid']."<br>";
                     echo $row['date'] . "<br><br>";
@@ -66,7 +67,8 @@ function getComments($conn, $commentDb){
         
                 if($row2 = $result2->fetch_assoc()){
                     echo "<div class='comment-box'><p>";
-                    echo $row2['userUid']."<br>";
+                    echo "<b>"; 
+                    echo $row2['userUid']."</b><br>";
                     echo $row['date'] . "<br><br>";
                     echo nl2br($row['message']);
                     echo "</p>";
@@ -105,7 +107,7 @@ function editComments($conn){
         $sql = "UPDATE $commentDb SET message='$message' WHERE cid='$cid'";
         $result = $conn -> query($sql);
 
-        header('Location:' .$fullURL);
+        header('Location:' .$url);
     }
 }
 
@@ -117,6 +119,6 @@ function deleteComments($conn, $commentDb){
         $sql = "DELETE FROM $commentDb WHERE cid='$cid'";
         $result = $conn -> query($sql);
 
-        header("Location: spotifyAppPage.php");
+        header('Location:' .$url);
     }
 }

@@ -1,7 +1,7 @@
 <?php
     // Edit Comment Page
     // Kamil Sacha
-    // Last Update: April 26, 2021
+    // Last Update: April 30, 2021
 
     include_once 'header.php';
     include_once 'dbh.inc.php';
@@ -14,8 +14,6 @@
     $commentsDb = $_POST['commentsDb'];
     $url = $_POST['url'];
 
-    // action is messing up body action='".editComments($conn)."'
-    echo $url;
     echo "<form method='POST' action='".editComments($conn)."'>
                 <input type='hidden' name='cid' value='".$cid."'>
                 <input type='hidden' name='uid' value='".$uid."'>

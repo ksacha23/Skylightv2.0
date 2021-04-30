@@ -1,7 +1,7 @@
 <?php
     // Doodle Jump App Page
     // Kamil Sacha
-    // Last Update: April 26, 2021
+    // Last Update: April 30, 2021
 
     session_start();
     include 'dbh.inc.php';
@@ -38,7 +38,7 @@
         <input type='hidden' name='uid' value='".$_SESSION['userid']."'>
         <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
         <textarea name='message'></textarea><br><br>
-        <button name='commentSubmit' type='submit'>Comment</button>
+        <button name='commentSubmit' type='submit'>Comment</button><br><br>
         </form>";
     }else{
         echo "You need to be logged in to comment!<br><br>";

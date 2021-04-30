@@ -7,6 +7,7 @@ session_start();
 include_once 'header.php';
 ?>
 
+<div id="helppage">
 <div id="browsing">
     <h2>Browsing the Catalog</h2>
     <p>Searching Skylight is easy! Just type an app name in the search bar to begin browsing.</p>
@@ -45,4 +46,5 @@ include_once 'header.php';
     <p>Type in your comment and click "submit.</p>
     <p>If you would like to edit your comment, navigate to it and click "Edit".</p>
     <p>If you would like to delete your comment, navigate to it and click "Delete".</p>
+</div>
 </div>

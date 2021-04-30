@@ -1,10 +1,10 @@
 /* 	Skylight Styling
 	Author: Kamil Sacha
-	Last Update: April 26, 2021
+	Last Update: April 30, 2021
 */
 
 body{
-	font-family: 'Helvetica';
+	font-family: 'Roboto', sans-serif;
 
 	background: #FF5F6D;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
@@ -135,8 +135,16 @@ textarea{
 	border-radius: 25%;
 }
 
+#appPageBody{
+    text-align: center;
+}
+
 #appTable{
     border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: auto;
+    width: 80%;
 }
 
 #appTable td, #appTable th{
@@ -160,4 +168,16 @@ textarea{
     opacity: 0.5;
 }
 
+#signupform{
+    text-align: center;
+}
 
+#signupform input{
+    width: 15%;
+    height: 30px;
+    border: none;
+}
+
+#helppage{
+    text-align: center;
+}

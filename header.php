@@ -1,7 +1,7 @@
 <?php
 	// Header for each page
 	// Kamil Sacha
-	// Last Update: April 25, 2021
+	// Last Update: April 30, 2021
 
 	// This header will appear on every page. It includes all the styling for the website and will adjust based on the type of user accesing the page
     session_start();
@@ -15,7 +15,7 @@
 	<title>Skylight</title>
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>

@@ -1,7 +1,7 @@
 <?php
     // App Page
     // Kamil Sacha
-    // Last Update: April 27, 2021
+    // Last Update: April 30, 2021
 
     // This page displays all the apps that are a part of Skylight and allows users to search/filter for apps they wish to discover
 
@@ -9,35 +9,26 @@
 
     if(isset($_POST['search'])){
         $valuetoSearch = $_POST['searchValue'];
-        $query = "SELECT name, creator, price, genre FROM apps WHERE CONCAT(name, creator, price, genre) LIKE '%".$valuetoSearch."%'";
+        $query = "SELECT name, creator, price, genre, platforms FROM apps WHERE CONCAT(name, creator, price, genre, platforms) LIKE '%".$valuetoSearch."%'";
         $search_result = filterTable($query);
         
     }elseif(isset($_POST['allApps'])){
-        $query = "SELECT name, creator, price, genre FROM apps";
+        $query = "SELECT name, creator, price, genre, platforms FROM apps";
         $search_result = filterTable($query);
     }
     
     else{
-        $query = "SELECT name, creator, price, genre FROM apps";
+        $query = "SELECT name, creator, price, genre, platforms FROM apps";
         $search_result = filterTable($query);
     }
 
 
     function filterTable($query){
-        $con = mysqli_connect('localhost', 'root', "", 'skylight_db');
-        $filter_Result = mysqli_query($con, $query);
+        $conn = mysqli_connect('localhost', 'root', "", 'skylight_db');
+        $filter_Result = mysqli_query($conn, $query);
         return $filter_Result;
     }
 ?>
-
-
-
-<!--
-Skylight App Page 
-Kamil Sacha
-Last Update: April 04, 2021
-This page will display all the apps in the Skylight app repository
---> 
 
 <!DOCTYPE html>
 
@@ -73,6 +64,7 @@ This page will display all the apps in the Skylight app repository
                     <th>Creator</th>
                     <th>Price</th>
                     <th>Genre</th>
+                    <th>Platforms</th>
                 </tr>
                 <?php while($row = mysqli_fetch_array($search_result)):?>
                     <tr>
@@ -86,6 +78,7 @@ This page will display all the apps in the Skylight app repository
                         <td><?php echo $row['creator'];?></td>
                         <td><?php echo $row['price'];?></td>
                         <td><?php echo $row['genre'];?></td>
+                        <td><?php echo $row['platforms'];?></td>
                     </tr>
                 <?php endwhile;?>
             </table>
